@@ -1,0 +1,23 @@
+datasource db {
+  provider = "mongodb"
+  url      = "mongodb+srv://westernfrog:Pottyboy%407483@users.r7xott4.mongodb.net/awesome"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String @unique
+  password String
+}
+
+model Blog {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  content   String
+  author    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
